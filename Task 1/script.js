@@ -8,3 +8,21 @@ pamatyti jo pateikto svorio kovertavimą į:
 Pastaba: atvaizdavimas turi būti matomas pateikus formą ir pateikiamas
 <div id="output"></div> viduje, bei turi turėti bent minimalų stilių;
 ------------------------------------------------------------------- */
+'use strict'
+const kgIvedimoLaukelis = document.getElementById('search');
+document.querySelector('#submit-btn').addEventListener('click',konvertuoti);
+
+function konvertuoti(event) {
+    event.preventDefault();
+    const kg = +kgIvedimoLaukelis.value;
+    const svarai = kg * 2.2046;
+    const gramai = kg / 0.0010000;
+    const uncijos = kg * 35.274
+    const atvaizduoju = `
+    <ul class="style">
+    <li>Svarai(lb):${svarai}</li>
+    <li>Gramai (g)${gramai}</li>
+    <li>Uncijos (oz)${uncijos}</li>
+  </ul>`;
+  document.getElementById('output').innerHTML = atvaizduoju;
+};
