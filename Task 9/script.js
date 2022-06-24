@@ -18,8 +18,8 @@ class Movie {
     }
     wasExpensive() {
         if (this.budget>100000000) {
-            return console.log('true')
-        }return console.log('false')
+             console.log('true')
+        } console.log('false')
     }
     // wasExpensive() {console.log(`${this.title} ir ${this.director}`)}
   }
