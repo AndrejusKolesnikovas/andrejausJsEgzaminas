@@ -25,4 +25,7 @@ function konvertuoti(event) {
     <li>Uncijos (oz)${uncijos}</li>
   </ul>`;
   document.getElementById('output').innerHTML = atvaizduoju;
+  document.getElementsByClassName('style')[0].style.marginLeft = '20vh';
+  document.getElementsByClassName('style')[0].style.color = '#000';
+
 };
