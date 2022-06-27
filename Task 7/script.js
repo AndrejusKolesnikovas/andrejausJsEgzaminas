@@ -10,3 +10,9 @@ const audi = {
   year: 2005,
   color: 'white',
 };
+
+function showObjectKeys(objektas) {
+  console.log(Object.keys(objektas));
+  // console.log(Object.values(objektas)); isveda masyvo key reiksmes
+}
+showObjectKeys(audi);
