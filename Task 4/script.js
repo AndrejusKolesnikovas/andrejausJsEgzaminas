@@ -11,11 +11,8 @@ turėti bent minimalų stilių ir būti responsive;
 
 const ENDPOINT = "cars.json";
 const divOutput = document.querySelector("#output");
-const table = document.createElement('table');
+const table = document.createElement("table");
 divOutput.append(table);
-
-
-
 
 const getUsers = () =>
   fetch(ENDPOINT).then((response) => {
@@ -32,7 +29,7 @@ function initDocument() {
     let promises = data.map((user) =>
       getUsers(user.brand, user.models).then((brand, models) => {
         user.brand[0] = brand;
-        console.log(user.models);
+        // console.log(user.models);
         user.models[0] = models;
 
         return user;
@@ -56,11 +53,11 @@ function arrangeData() {
         </tr>
         <tr>
             <td> 
-               Models:<ul>${user.models.join('<li>*</li>')}</ul>
+               Models:<ul>${user.models.join("<li>*</li>")}</ul>
             </td>
         </tr>
        `;
-       table.innerHTML = usersElements;
+      table.innerHTML = usersElements;
     }
   });
 }
