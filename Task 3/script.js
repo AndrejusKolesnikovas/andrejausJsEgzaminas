@@ -10,14 +10,50 @@ Paspaudus mygtuką "Show users":
 Pastaba: Sukurta kortelė, kurioje yra pateikiama vartotojo informacija, turi 
 turėti bent minimalų stilių ir būti responsive;
 -------------------------------------------------------------------------- */
-
+'use strict'
+// import {getLogin} from "./data/users.js";
 const ENDPOINT = 'https://api.github.com/users';
+let users = {};
 
-const getUsers = () =>
-  fetch(ENDPOINT).then((response) => {
-    if (!response.ok) {
-      throw new Error('Įvyko klaida: ' + response.status);
+const divOutput = document.querySelector('#output');
+
+
+const fetchData = async () => {
+  try {
+    const response = await fetch(ENDPOINT);
+    if (response.ok) {
+      users.avatars= await response.json();
+      populateTable(users.avatars);
     }
-    return response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+document.getElementById('btn').addEventListener('click', fetchData)
+
+// const btnConteiner = document.querySelector(".btn-container");
+// btnConteiner.addEventListener("click", fetchData);
+
+
+function populateTable(avatars) {
+  const divOutput = document.getElementById('output');
+  divOutput.innerHTML = '';
+ 
+  avatars.forEach((card) => {
+    const personCard = document.createElement('ul');
+
+    const loginLi = document.createElement('li');
+    loginLi.innerText = card.login;
+
+    const img = document.createElement('img');
+    img.src = card.avatar_url;
+    img.setAttribute('alt', 'UserPicture');
+    const avatar_urlLi = document.createElement('li');
+    avatar_urlLi.append(img);
+
+    personCard.append(loginLi, avatar_urlLi);
+   
+    divOutput.append(personCard);
   });
-  
+  document.querySelector('p').innerHTML = " ";
+};
